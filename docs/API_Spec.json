@@ -1,0 +1,347 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "API Spec",
+    "version": "1.0",
+    "description": "API untuk mengelola data proyek dan lokasi menggunakan Java Spring Boot"
+  },
+  "servers": [
+    {
+      "url": "https://api.server.test/v1"
+    }
+  ],
+  "paths": {
+    "/lokasi": {
+      "post": {
+        "summary": "Menambahkan data lokasi",
+        "operationId": "addLokasi",
+        "tags": ["Lokasi"],
+        "requestBody": {
+          "description": "Data lokasi baru",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Lokasi"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Lokasi berhasil ditambahkan",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Lokasi"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Permintaan tidak valid"
+          }
+        }
+      },
+      "get": {
+        "summary": "Menampilkan semua data lokasi",
+        "operationId": "getAllLokasi",
+        "tags": ["Lokasi"],
+        "responses": {
+          "200": {
+            "description": "Daftar semua lokasi",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Lokasi"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lokasi/{id}": {
+      "put": {
+        "summary": "Update / edit data lokasi",
+        "operationId": "updateLokasi",
+        "tags": ["Lokasi"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID lokasi yang akan diupdate"
+          }
+        ],
+        "requestBody": {
+          "description": "Data lokasi yang diupdate",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Lokasi"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Lokasi berhasil diupdate",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Lokasi"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Lokasi tidak ditemukan"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Menghapus data lokasi",
+        "operationId": "deleteLokasi",
+        "tags": ["Lokasi"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID lokasi yang akan dihapus"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Lokasi berhasil dihapus"
+          },
+          "404": {
+            "description": "Lokasi tidak ditemukan"
+          }
+        }
+      }
+    },
+    "/proyek": {
+      "post": {
+        "summary": "Menambahkan data proyek termasuk lokasi proyek",
+        "operationId": "addProyek",
+        "tags": ["Proyek"],
+        "requestBody": {
+          "description": "Data proyek baru",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Proyek"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Proyek berhasil ditambahkan",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Proyek"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Permintaan tidak valid"
+          }
+        }
+      },
+      "get": {
+        "summary": "Menampilkan semua data proyek termasuk lokasinya",
+        "operationId": "getAllProyek",
+        "tags": ["Proyek"],
+        "responses": {
+          "200": {
+            "description": "Daftar semua proyek",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Proyek"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/proyek/{id}": {
+      "put": {
+        "summary": "Update / edit data proyek",
+        "operationId": "updateProyek",
+        "tags": ["Proyek"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID proyek yang akan diupdate"
+          }
+        ],
+        "requestBody": {
+          "description": "Data proyek yang diupdate",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Proyek"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Proyek berhasil diupdate",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Proyek"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Proyek tidak ditemukan"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Menghapus data proyek",
+        "operationId": "deleteProyek",
+        "tags": ["Proyek"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "ID proyek yang akan dihapus"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Proyek berhasil dihapus"
+          },
+          "404": {
+            "description": "Proyek tidak ditemukan"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Lokasi": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "nama_lokasi": {
+            "type": "string",
+            "example": "Kantor Pusat"
+          },
+          "negara": {
+            "type": "string",
+            "example": "Indonesia"
+          },
+          "provinsi": {
+            "type": "string",
+            "example": "Jawa Barat"
+          },
+          "kota": {
+            "type": "string",
+            "example": "Bandung"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-08-15T10:00:00Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-08-15T10:00:00Z"
+          }
+        }
+      },
+      "Proyek": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "nama_proyek": {
+            "type": "string",
+            "example": "Proyek A"
+          },
+          "client": {
+            "type": "string",
+            "example": "Client X"
+          },
+          "tgl_mulai": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-08-15T10:00:00Z"
+          },
+          "tgl_selesai": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-12-15T10:00:00Z"
+          },
+          "pimpinan_proyek": {
+            "type": "string",
+            "example": "Manajer Y"
+          },
+          "keterangan": {
+            "type": "string",
+            "example": "Keterangan tambahan"
+          },
+          "lokasi": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Lokasi"
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-08-15T10:00:00Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-08-15T10:00:00Z"
+          }
+        }
+      }
+    }
+  }
+}
