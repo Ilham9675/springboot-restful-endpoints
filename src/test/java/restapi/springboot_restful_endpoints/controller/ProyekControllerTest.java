@@ -23,7 +23,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import restapi.springboot_restful_endpoints.controller.ProyekController;
 import restapi.springboot_restful_endpoints.entity.Proyek;
 import restapi.springboot_restful_endpoints.service.ProyekService;
 
@@ -55,7 +54,7 @@ class ProyekControllerTest {
     @Test
     void testGetAllProyek() throws Exception {
         when(service.getAllProyek()).thenReturn(Arrays.asList(proyek));
-        mockMvc.perform(get("/api/proyek"))
+        mockMvc.perform(get("/proyek"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].namaProyek").value("Proyek A"));
         verify(service, times(1)).getAllProyek();
@@ -64,7 +63,7 @@ class ProyekControllerTest {
     @Test
     void testGetProyekById() throws Exception {
         when(service.getProyekById(1)).thenReturn(proyek);
-        mockMvc.perform(get("/api/proyek/1"))
+        mockMvc.perform(get("/proyek/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.namaProyek").value("Proyek A"));
         verify(service, times(1)).getProyekById(1);
@@ -73,7 +72,7 @@ class ProyekControllerTest {
     @Test
     void testCreateProyek() throws Exception {
         when(service.saveProyek(any(Proyek.class))).thenReturn(proyek);
-        mockMvc.perform(post("/api/proyek")
+        mockMvc.perform(post("/proyek")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"namaProyek\":\"Proyek A\",\"client\":\"Client A\",\"tglMulai\":\"2024-08-16T14:05:50\",\"tglSelesai\":\"2024-08-26T14:05:50\",\"pimpinanProyek\":\"Pimpinan A\",\"keterangan\":\"Keterangan A\"}"))
                 .andExpect(status().isOk())
@@ -84,7 +83,7 @@ class ProyekControllerTest {
     @Test
     void testDeleteProyek() throws Exception {
         doNothing().when(service).deleteProyek(1);
-        mockMvc.perform(delete("/api/proyek/1"))
+        mockMvc.perform(delete("/proyek/1"))
                 .andExpect(status().isOk());
         verify(service, times(1)).deleteProyek(1);
     }

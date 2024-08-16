@@ -15,7 +15,7 @@ import restapi.springboot_restful_endpoints.entity.Proyek;
 import restapi.springboot_restful_endpoints.service.ProyekService;
 
 @RestController
-@RequestMapping("/api/proyek")
+@RequestMapping("/proyek")
 public class ProyekController {
     @Autowired
     private ProyekService service;
