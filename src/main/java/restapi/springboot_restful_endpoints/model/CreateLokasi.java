@@ -1,5 +1,4 @@
-package restapi.model;
-
+package restapi.springboot_restful_endpoints.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,14 +10,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 
-public class LokasiResponse {
-
-    private Integer id;
+public class CreateLokasi {
+    
     private String namaLokasi;
     private String negara;
     private String provinsi;
     private String kota;
     private String createdAt;
 
+    
 
 }

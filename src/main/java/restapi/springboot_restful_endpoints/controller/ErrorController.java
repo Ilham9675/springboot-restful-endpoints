@@ -1,4 +1,4 @@
-package restapi.controller;
+package restapi.springboot_restful_endpoints.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.server.ResponseStatusException;
 
 import jakarta.validation.ConstraintViolationException;
-import restapi.model.WebResponse;
+import restapi.springboot_restful_endpoints.model.WebResponse;
 
 @RestControllerAdvice
 public class ErrorController {

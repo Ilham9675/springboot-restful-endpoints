@@ -7,11 +7,11 @@
   },
   "servers": [
     {
-      "url": "https://api.server.test/v1"
+      "url": "http://127.0.0.1:8080"
     }
   ],
   "paths": {
-    "/api/lokasi": {
+    "/lokasi": {
       "post": {
         "summary": "Menambahkan data lokasi",
         "operationId": "addLokasi",
@@ -64,7 +64,7 @@
         }
       }
     },
-    "/api/lokasi/{id}": {
+    "/lokasi/{id}": {
       "put": {
         "summary": "Update / edit data lokasi",
         "operationId": "updateLokasi",
@@ -133,7 +133,7 @@
       }
     }
   },
-  "/proyek": {
+  "/api/proyek": {
     "post": {
       "summary": "Menambahkan data proyek termasuk lokasi proyek",
       "operationId": "addProyek",
@@ -184,26 +184,38 @@
           }
         }
       }
-    },
-    "/proyek/{id}": {
-      "put": {
-        "summary": "Update / edit data proyek",
-        "operationId": "updateProyek",
-        "tags": ["Proyek"],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            },
-            "description": "ID proyek yang akan diupdate"
-          }
-        ],
-        "requestBody": {
-          "description": "Data proyek yang diupdate",
+    }
+  },
+  "/api/proyek/{id}": {
+    "put": {
+      "summary": "Update / edit data proyek",
+      "operationId": "updateProyek",
+      "tags": ["Proyek"],
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
           "required": true,
+          "schema": {
+            "type": "integer"
+          },
+          "description": "ID proyek yang akan diupdate"
+        }
+      ],
+      "requestBody": {
+        "description": "Data proyek yang diupdate",
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Proyek"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "Proyek berhasil diupdate",
           "content": {
             "application/json": {
               "schema": {
@@ -212,44 +224,32 @@
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": "Proyek berhasil diupdate",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Proyek"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Proyek tidak ditemukan"
-          }
+        "404": {
+          "description": "Proyek tidak ditemukan"
         }
-      },
-      "delete": {
-        "summary": "Menghapus data proyek",
-        "operationId": "deleteProyek",
-        "tags": ["Proyek"],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer"
-            },
-            "description": "ID proyek yang akan dihapus"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Proyek berhasil dihapus"
+      }
+    },
+    "delete": {
+      "summary": "Menghapus data proyek",
+      "operationId": "deleteProyek",
+      "tags": ["Proyek"],
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "integer"
           },
-          "404": {
-            "description": "Proyek tidak ditemukan"
-          }
+          "description": "ID proyek yang akan dihapus"
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "Proyek berhasil dihapus"
+        },
+        "404": {
+          "description": "Proyek tidak ditemukan"
         }
       }
     }

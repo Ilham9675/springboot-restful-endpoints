@@ -1,4 +1,4 @@
-package restapi.model;
+package restapi.springboot_restful_endpoints.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

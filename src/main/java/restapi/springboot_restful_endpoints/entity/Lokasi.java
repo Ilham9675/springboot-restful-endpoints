@@ -1,7 +1,8 @@
-package restapi.entity;
+package restapi.springboot_restful_endpoints.entity;
 
 import java.sql.Timestamp;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,14 +22,25 @@ import lombok.Setter;
 public class Lokasi {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
+    private Long id;
+    
+    @Column(name = "nama_lokasi")
     private String namaLokasi;
+    
+    @Column(name = "negara")
     private String negara;
+    
+    @Column(name = "provinsi")
     private String provinsi;
+    
+    @Column(name = "kota")
     private String kota;
+    
+    @Column(name = "created_at")
     private Timestamp createdAt;
+    
+    @Column(name = "update_at")
     private Timestamp updateAt;
-
+    
     
 }

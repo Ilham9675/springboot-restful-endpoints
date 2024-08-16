@@ -35,19 +35,20 @@ ENGINE = InnoDB;
 
 
 CREATE TABLE IF NOT EXISTS `mydb`.`proyek_lokasi` (
-  `proyek_id` INT NOT NULL,
-  `lokasi_id` INT NOT NULL,
-  INDEX `pronyek_id_foreign_key_idx` (`proyek_id` ASC) ,
-  INDEX `lokasi_id_foreign_key_idx` (`lokasi_id` ASC),
-  CONSTRAINT `pronyek_id_foreign_key`
-    FOREIGN KEY (`proyek_id`)
-    REFERENCES `mydb`.`proyek` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `lokasi_id_foreign_key`
-    FOREIGN KEY (`lokasi_id`)
-    REFERENCES `mydb`.`lokasi` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    `proyek_id` INT NOT NULL,
+    `lokasi_id` INT NOT NULL,
+    INDEX `proyek_id_foreign_key_idx` (`proyek_id` ASC),
+    INDEX `lokasi_id_foreign_key_idx` (`lokasi_id` ASC),
+    CONSTRAINT `proyek_id_foreign_key`
+        FOREIGN KEY (`proyek_id`)
+        REFERENCES `mydb`.`proyek` (`id`)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION,
+    CONSTRAINT `lokasi_id_foreign_key`
+        FOREIGN KEY (`lokasi_id`)
+        REFERENCES `mydb`.`lokasi` (`id`)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION
+) ENGINE=INNODB;
+
 
