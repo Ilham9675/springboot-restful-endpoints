@@ -1,4 +1,5 @@
 package restapi.springboot_restful_endpoints.controller;
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,12 +33,15 @@ public class ProyekController {
 
     @PostMapping
     public Proyek createProyek(@RequestBody Proyek proyek) {
+        proyek.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+        proyek.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
         return service.saveProyek(proyek);
     }
 
     @PutMapping("/{id}")
     public Proyek updateProyek(@PathVariable Integer id, @RequestBody Proyek proyek) {
         proyek.setId(id);
+        proyek.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
         return service.saveProyek(proyek);
     }
 

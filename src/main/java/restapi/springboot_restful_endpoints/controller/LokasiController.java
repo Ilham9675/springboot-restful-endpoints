@@ -1,5 +1,6 @@
 package restapi.springboot_restful_endpoints.controller;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,12 +35,15 @@ public class LokasiController {
     
     @PostMapping
     public Lokasi createLokasi(@RequestBody Lokasi lokasi) {
+        lokasi.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+        lokasi.setUpdateAt(new Timestamp(System.currentTimeMillis()));
         return lokasiService.saveLokasi(lokasi);
     }
     
     @PutMapping("/{id}")
     public Lokasi updateLokasi(@PathVariable Long id, @RequestBody Lokasi lokasi) {
         lokasi.setId(id);
+        lokasi.setUpdateAt(new Timestamp(System.currentTimeMillis()));
         return lokasiService.saveLokasi(lokasi);
     }
     
